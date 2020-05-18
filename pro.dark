@@ -178,3 +178,204 @@ class Heroe {
   
   
 }
+
+
+void main() {
+  
+  final cuadrado = new Cuadrado();
+  
+  cuadrado.lado = 10;
+  
+  
+  print( cuadrado );
+  print( 'área: ${ cuadrado.area }' );
+  
+}
+
+
+
+class Cuadrado {
+  
+  double _lado;
+//   double _area;
+  
+  
+  set lado( double valor ) {
+    
+    if ( valor <= 0 ) {
+      throw('El lado no puede ser menor o igual a 0');
+    }
+    
+    _lado = valor;
+    
+  }
+  
+  
+  double get area => _lado * _lado;
+  
+  
+  toString() => 'Lado: $_lado';
+  
+}
+
+void main() {
+  
+  final perro = new Perro();
+  perro.emitirSonido();
+  
+  final gato = new Gato();
+  gato.emitirSonido();
+  
+}
+
+
+abstract class Animal {
+  
+  int patas;
+  
+  void emitirSonido();
+  
+}
+
+class Perro implements Animal{
+  
+  int patas;
+  int colas;
+  
+  void emitirSonido() => print('GUAUUUUU!!');
+  
+}
+
+class Gato implements Animal {
+  
+  int patas;
+  
+  void emitirSonido() => print('MIAUUUU!!');
+  
+}
+
+void main() {
+  
+  final superman = new Heroe();
+  superman.nombre = 'Clark Kent';
+  
+  final luthor = new Villano();
+  luthor.nombre  = 'Lex Luthor';
+  
+  
+}
+
+
+
+abstract class Personaje {
+  String poder;
+  String nombre;
+}
+
+
+class Heroe extends Personaje { 
+	
+  int valentia;
+
+}
+
+class Villano extends Personaje {
+
+  int maldad;
+}
+
+
+  
+abstract class Animal { }
+
+abstract class Mamifero extends Animal { }
+
+abstract class Ave extends Animal { }
+
+abstract class Pez extends Animal { }
+
+
+abstract class Volador {
+  void volar() => print('Estoy volando!!');
+}
+
+abstract class Caminante {
+  void caminar() => print('Estoy caminando!!');
+}
+
+abstract class Nadador {
+  void nadar() => print('Estoy nadando!!');
+}
+
+
+class Delfin extends Mamifero with Nadador {}
+
+class Murcielago extends Mamifero with Caminante, Volador {}
+
+class Gato extends Mamifero with Caminante {}
+
+class Paloma extends Ave with Caminante, Volador {}
+
+class Pato extends Ave with Caminante, Volador, Nadador {}
+
+class Tiburon extends Pez with Nadador {}
+
+class PezVolador extends Pez with Nadador, Volador { }
+
+
+void main() {
+  
+  final pato = new Pato();
+  pato.volar();
+  
+  final pezVolador = new PezVolador();
+  pezVolador.nadar();
+  
+  
+}
+
+void main() {
+  
+	print('Estamos a punto de pedir datos');
+  
+  httpGet('https://api.nasa.com/aliens').then( (data) {
+    
+    print( data );
+    
+  });
+  
+  
+  print('Ultima línea');
+}
+
+
+
+Future<String> httpGet(String url) {
+  
+  return Future.delayed( new Duration( seconds: 4 ), () {
+    return 'Hola Mundo';
+  });
+  
+}
+
+void main() async {
+  
+	print('Estamos a punto de pedir datos');
+  
+  String data = await httpGet('https://api.nasa.com/aliens');
+  
+  print( data );
+  
+  print('Ultima línea');
+}
+
+
+
+Future<String> httpGet(String url) {
+  
+  return Future.delayed( new Duration( seconds: 4 ), () {
+    return 'Hola Mundo';
+  });
+  
+}
+
